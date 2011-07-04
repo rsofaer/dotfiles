@@ -1,0 +1,16 @@
+[user]
+	name = Raphael Sofaer
+	email = raphael@joindiaspora.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[branch]
+	autosetuprebase = always
+  autosetupmerge = true
+[url "git@github.com:rsofaer/"]
+  insteadOf = "git://github.com/rsofaer/"
+[url "git@github.com:diaspora/"]
+  insteadOf = "git://github.com/diaspora/"
+[github]
+	user = rsofaer

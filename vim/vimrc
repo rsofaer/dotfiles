@@ -1,0 +1,60 @@
+set nocompatible  "Because old VI is crazy
+syntax on         "Because you like highlighting
+
+set number        "Because you like line numbers
+set ruler         "Because you like knowing where the cursor is
+set nowrap        "Show lines on one line
+
+set showmatch
+set hlsearch
+set showcmd    " display incomplete commands
+set incsearch
+
+set backspace=indent,eol,start " Allow backspacing over autoindent, line breaks and start of insert action
+
+set visualbell
+
+" set t_Co=256 " 256 colors, this is great with iTerm, but XTerm can't do it.
+
+call pathogen#runtime_append_all_bundles()
+
+set background=dark
+colorscheme ir_black
+filetype plugin indent on
+au BufRead,BufNewFile *.thor set filetype=ruby
+au BufRead,BufNewFile *.god set filetype=ruby
+
+set tabstop=2
+set smarttab
+set expandtab
+set autoindent
+set shiftwidth=2
+set fo-=t
+set guifont=Menlo:h12
+set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+
+set nobackup       "no backup files
+set nowritebackup  "only in case you don't want a backup file while editing
+set noswapfile     "no swap files
+
+" make /-style searches case-insensitive unless there is a capital letter in the search expression
+set ignorecase
+set smartcase
+
+" make tabs and trailing spaces visible
+set list
+set listchars=tab:▸\ ,trail:¬
+" and delete trailing spaces with :w
+autocmd FileType ruby,erb,haml,javascript autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+set wildignore=tmp/**/*,*.log*,*.png,*.gif,*.jpg
+" re-open opened buffers
+map <C-t> :CommandT<CR>
+
+"autocmd VimEnter * exe 'NERDTree' | wincmd l "This opens NERDtree at vi start
+
+map <C-f> <Plug>Ack
