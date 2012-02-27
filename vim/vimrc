@@ -19,10 +19,12 @@ set visualbell
 call pathogen#runtime_append_all_bundles()
 
 set background=dark
-colorscheme ir_black
+colorscheme desert
+filetype plugin on
 filetype plugin indent on
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.god set filetype=ruby
+au BufRead,BufNewFile *.lsh set filetype=lisp
 
 set tabstop=2
 set smarttab
@@ -58,3 +60,10 @@ map <C-t> :CommandT<CR>
 "autocmd VimEnter * exe 'NERDTree' | wincmd l "This opens NERDtree at vi start
 
 map <C-f> <Plug>Ack
+
+"For latex-suite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Imap_UsePlaceHolders = 0
+
+:command TPDF !pdflatex -interaction=nonstopmode %; open %:r.pdf
